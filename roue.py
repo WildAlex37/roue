@@ -1,9 +1,12 @@
 import streamlit as st
 import random
 
-# Liste des pays du monde
-with open("countries.txt") as f:
-    COUNTRIES = [line.strip() for line in f.readlines()]
+# Chargement des pays depuis un fichier externe
+try:
+    with open("countries.txt") as f:
+        COUNTRIES = [line.strip() for line in f.readlines()]
+except FileNotFoundError:
+    COUNTRIES = ["France", "Germany", "Spain", "Italy", "USA"]  # Fallback en cas d'absence du fichier
 
 def app():
     # Initialisation des états
